@@ -38,25 +38,31 @@ export default()=>{
     }
 
 
-    const sortByNames = () => {
-        if(!nameSortType || nameSortType==="DESC"){
-            setFrontEndTeam(arraySort(frontEndTeam, 'name'));
-            setNameSortType("ASC")
-        }else {
-            setFrontEndTeam(arraySort(frontEndTeam, 'name',{reverse: true}  ));
-            setNameSortType("DESC")
-        }
-    };
+    // const sortByNames = () => {
+    //     if(!nameSortType || nameSortType==="DESC"){
+    //         setFrontEndTeam(arraySort(frontEndTeam, 'name'));
+    //         setNameSortType("ASC")
+    //     }else {
+    //         setFrontEndTeam(arraySort(frontEndTeam, 'name',{reverse: true}  ));
+    //         setNameSortType("DESC")
+    //     }
+    // };
 
-    const sortByCompany = () => {
+    const sortByNames = (x) => {
+        x.toString();        
         if(!nameSortType || nameSortType==="DESC"){
-            setFrontEndTeam(arraySort(frontEndTeam, 'company'));
-            setNameSortType("ASC")
-        }else {
-            setFrontEndTeam(arraySort(frontEndTeam, 'company',{reverse: true}  ));
-            setNameSortType("DESC")
+        setdata(arraySort(frontEndTeam, x));
+        setNameSortType("ASC");
+        // this.classList.toggle("fas fa-caret-up");
         }
-    };
+        else
+        {
+        setdata(arraySort(frontEndTeam, x,{reverse: true} ));
+        setNameSortType("DESC")
+        // this.classList.toggle("fas fa-caret-down");
+        }
+       };
+
 
     return(
         <>
@@ -65,11 +71,11 @@ export default()=>{
         <Table striped bordered hover>
         <thead>
                     <tr>
-                        <th onClick={()=>sortByCompany()}>Name</th>
-                        <th>Company</th>
-                        <th>email</th>
-                        <th>Address</th>
-                        <th>Company</th>
+                        <th onClick={()=>sortByNames("name")}>Name</th>
+                        <th onClick={()=> sortByNames("company")}>Company</th>
+                        <th onClick={()=>sortByNames("email")}>email</th>
+                        <th onClick={()=>sortByNames("phone")}>phone</th>
+                        <th onClick={()=>sortByNames("address")}>Address</th>
                     </tr>
                 </thead>
             {frontEndTeam.map(single => 
