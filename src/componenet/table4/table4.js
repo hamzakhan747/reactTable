@@ -1,10 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import arraySort from 'array-sort';
-import data from '../data/data.json'
+// import data from '../data/data.json'
 import { Table } from 'react-bootstrap'
+import axios from 'axios';
+
+
+
 
 export default()=>{
-    const [frontEndTeam, setFrontEndTeam ]= useState(data);
+
+    const [data, setdata] = useState([]);
+
+
+    useEffect(()=>{
+        axios.get('https://personal-app-team.herokuapp.com/api/team').then(res=>{
+            console.log("response", res.data);
+            // const array=[res.data]
+            // setPetOwner(res.data.data.petOwnderDetail)
+            // setPetOwner(array);
+            setFrontEndTeam(res.data)
+        });
+    },[]);
+
+
+    const [frontEndTeam, setFrontEndTeam ]= useState([]);
 
     const [nameSortType, setNameSortType] = useState("");
 
@@ -64,7 +83,7 @@ export default()=>{
             <td>{single.email}</td>
             <td>{single.phone}</td>
             <td>{single.address}</td>
-            <button onClick={()=>sortByNames()}>{nameSortType&&nameSortType==="DESC"?"Delete":"DESCENDING"}</button>
+            <button onClick={()=>sortByNames()}>{nameSortType&&nameSortType==="DESC"?"Delete":"Delete"}</button>
             </tr>
             </tbody>
 
