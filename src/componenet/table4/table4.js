@@ -47,7 +47,9 @@ export default()=>{
     //         setNameSortType("DESC")
     //     }
     // };
-
+    const deleteName = (id) => {
+        setFrontEndTeam([...frontEndTeam.filter((sin) => sin.id !== id)])
+    };
     const sortByNames = (x) => {
         x.toString();        
         if(!nameSortType || nameSortType==="DESC"){
@@ -62,7 +64,7 @@ export default()=>{
         // this.classList.toggle("fas fa-caret-down");
         }
        };
-
+   
 
     return(
         <>
@@ -89,7 +91,7 @@ export default()=>{
             <td>{single.email}</td>
             <td>{single.phone}</td>
             <td>{single.address}</td>
-            <button onClick={()=>sortByNames()}>{nameSortType&&nameSortType==="DESC"?"Delete":"Delete"}</button>
+            <button onClick={() => deleteName(single.id)}>delete</button>
             </tr>
             </tbody>
 
