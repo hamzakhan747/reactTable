@@ -70,6 +70,7 @@ return(
           <label>Email</label>
           <FormControl
             autoFocus
+            placeholder="Email"
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}

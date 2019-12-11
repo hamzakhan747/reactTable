@@ -30,22 +30,31 @@ export default()=>{
     // delete
             const Delete=(id)=>{
                 // let token = localStorage.getItem("token");
-              
-                        
+                // let { data } = frontEndTeam;
+                if (window.confirm('Are you sure you wish to delete this category?')) {
                 
-                axios.delete(`https://json-team-crud.herokuapp.com/api/team${id}`)
+                axios.delete("https://json-team-crud.herokuapp.com/api/team/"+ id)
                 .then(res => {
                     console.log(res.data);
-                      setfrontEndTeam(res.data.data)
+                    // setfrontEndTeam({data: data.filter(single => single.id !== id)});
+                    setfrontEndTeam([...frontEndTeam.filter(Del=>Del.id!==id)]); 
+                    //   setfrontEndTeam(res.data.data)
                 })
                 .catch((err) => {
                     console.log(err);
                 })
-                setfrontEndTeam([...frontEndTeam.filter(Del=>Del.id!==id)]); 
-
+                // setfrontEndTeam([...frontEndTeam.filter(Del=>Del.id!==id)]); 
+            }
             }
 
-
+            // deletePage(id){
+            //     let { data } = this.state;
+            //     if (window.confirm('Are you sure you wish to delete this category?')) {
+            //         axios.delete(apiPath + "/ad-space/" + id).then(res => {
+            //             this.setState({data: data.filter(single => single.id !== id)});
+            //         });
+            //     }
+            // }
     return(
         <>
             <table>
@@ -76,7 +85,7 @@ export default()=>{
                     <td>{single.email}</td>
                     <td>{single.phone}</td>
                     <td>{single.postBody}</td>
-                    <td><button>EDIT</button></td>
+                    <td><Link to={'/put'}><button>EDIT</button></Link></td>
                     <td><button onClick={()=>Delete(single.id)}>DELETE</button></td>
                     </tr>
                 </tbody>

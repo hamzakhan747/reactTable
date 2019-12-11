@@ -18,7 +18,10 @@ import Animate from './componenet/animation/animate'
 import Entry from './componenet/table4/addEntry'
 import axiosgGP from './componenet/axiosGet-Post/get'
 import post from './componenet/axiosGet-Post/post'
-
+import Currency from './componenet/currencyPractice/currency'
+import Buttons from './componenet/threeButtons/buttons'
+import Model from './componenet/modelPractice/model'
+import Put from './componenet/axiosGet-Post/put'
 
 export default ()=>{
   return(
@@ -41,7 +44,10 @@ export default ()=>{
                 <Route path={"/entry"} component={Entry}/>
                 <Route path={"/get"} component={axiosgGP}/>
                 <Route path={"/post"} component={post}/>
-                
+                <Route path={"/currency"} component={Currency}/>
+                <Route path={"/buttons"} component={Buttons}/>
+                <Route path={"/model"} component={Model}/>
+                <Route path={"/put"} component={Put}/>
             </Switch>
         </BrowserRouter>
 
